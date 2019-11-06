@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="ytrj.yc.mapper.CsUserMapper">
+  
+  <!-- 添加厨师信息 -->
+  <!-- void insertCsUser(CsUser csUser); -->
+
+  <insert id="insertCsUser" parameterType="ytrj.yc.bean.CsUser">
+  	insert into csuser(
+  		id,name,phone,site,age,password
+  	)values(
+  		#{id},#{name},#{phone},#{site},#{age},#{password}
+  	)
+  </insert>
+  
+  <!-- 查询姓名是否存在，存在返回非0，不存在返回0 -->
+  <!-- Integer selectCsUserName(String name); -->
+  
+  <select id="selectCsUserName" resultType="java.lang.Integer">
+  	select
+  		count(name)
+  	from
+  		csuser
+  	where
+  		name=#{name}
+  </select>
+  
+  
+  <!-- 查询手机号是否存在，存在返回非0，不存在返回0 -->
+  <!-- Integer selectCsUserPhone(Integer phone); -->
+  
+  <select id="selectCsUserPhone" resultType="java.lang.Integer">
+  	select
+  		count(phone)
+  	from
+  		csuser
+  	where
+  		phone=#{phone}
+  </select>
+  
+ 
+	
+  </mapper>
